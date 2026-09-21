@@ -1,5 +1,10 @@
 case: bump
 source: "Official TELEMAC-MASCARET GAIA Bump benchmark"
 public_case_files: false
-notes: "Use the benchmark from your TELEMAC installation; publish only your scenario modifications/configuration."
+scenario_table: "examples/bump/scenarios.csv"
+split:
+  train: [B01_Base, B02_LowQ, B03_HighQ, B04_LowZ, B05_HighZ, B07_HighQ_HighZ]
+  validation: [B06_LowQ_LowZ]
+  test: [B08_HighQ_LowZ]
 features: [u, v, h, z]
+notes: "Use the official benchmark as the base case; this repository publishes the study-specific forcing combinations and split."
