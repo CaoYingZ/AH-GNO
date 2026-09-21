@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""Evaluate an AH-GNO checkpoint in physical bed-elevation units.
+
+Metrics are weighted by nodal control area. The script reports overall,
+per-horizon and optional per-case results, together with the learned temporal
+horizon statistics.
 """Evaluate an AH-GNO checkpoint with area-weighted physical-space metrics.
 
 The evaluator reports metrics on denormalized bed-elevation increments and does
