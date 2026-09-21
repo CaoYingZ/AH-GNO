@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the associated manuscript."
+message: "Please cite the AH-GNO paper when using this code."
 title: "AH-GNO: Adaptive-Horizon Graph Neural Operator for morphodynamic modelling"
 type: software
 authors:
