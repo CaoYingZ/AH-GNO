@@ -1,8 +1,11 @@
 case: yen
 source: "Official TELEMAC-MASCARET GAIA Yen 180-degree bend benchmark"
 public_case_files: false
-notes: "Use the benchmark from your TELEMAC installation; keep only your scenario hydrographs/config changes here."
-history_k: 7
-bundle_b: 10
-gno_radius: 0.15
+scenario_table: "examples/yen/scenarios.csv"
+hydrograph_directory: "examples/yen/hydrographs"
+split:
+  train: [Y01, Y02, Y03, Y04, Y05, Y06, Y09, Y10, Y12, Y14, Y17, Y19]
+  validation: [Y07, Y13, Y16, Y20]
+  test: [Y08, Y11, Y15, Y18]
 features: [u, v, h, z]
+notes: "Use the official Yen benchmark as the base case; this repository publishes the study-specific forcing hydrographs and scenario split."
