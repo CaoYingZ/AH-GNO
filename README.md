@@ -37,6 +37,7 @@ AH-GNO/
 │       └── losses.py
 │
 ├── scripts/
+│   ├── build_dataset.py
 │   ├── train.py
 │   └── run_telemac_coupling.py
 │
@@ -57,6 +58,7 @@ AH-GNO/
 │       └── README.md
 │
 ├── docs/
+│   ├── DATA_PREPARATION.md
 │   └── AREA_WEIGHTED_COUPLING.md
 │
 ├── CITATION.cff
@@ -98,7 +100,7 @@ python scripts/train.py \
 
 The public training script implements the area-weighted Huber loss and the learned horizon objective used by AH-GNO.
 
-The full research dataset binaries are not included in the repository. Public benchmark forcing files and scenario definitions are provided under `examples/`.
+The full research dataset binaries are not included in the repository. Public benchmark forcing files and scenario definitions are provided under `examples/`. A reproducible SELAFIN-to-AH-GNO dataset builder is provided in `scripts/build_dataset.py`; see [`docs/DATA_PREPARATION.md`](docs/DATA_PREPARATION.md) for the expected manifest and preprocessing workflow.
 
 ## TELEMAC online coupling
 
