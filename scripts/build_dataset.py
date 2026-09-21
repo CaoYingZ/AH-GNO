@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""Build an AH-GNO dataset from paired TELEMAC-2D and GAIA results.
+
+Cases are listed in a CSV manifest. The script checks mesh/time consistency,
+forms history and target windows, computes nodal control areas, and derives
+normalization statistics from the training split only.
 """Build an AH-GNO training dataset from paired TELEMAC-2D / GAIA SELAFIN files.
 
 Manifest columns:
