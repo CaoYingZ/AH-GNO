@@ -1,10 +1,8 @@
-"""Adaptive-Horizon Graph Neural Operator (AH-GNO).
+"""AH-GNO model definition.
 
-This module matches the area-weighted formulation used in the manuscript:
-- nodal control-area quadrature inside the graph integral operator;
-- local area normalization inside each search neighborhood;
-- area-weighted global descriptors for the history selector and horizon head;
-- sparse-softmax history selection and learned write-back horizon.
+The graph operator uses nodal control area for spatial aggregation. The model
+also includes the learned history selector and write-back horizon used in the
+TELEMAC coupling experiments.
 """
 from __future__ import annotations
 
