@@ -1,19 +1,8 @@
-# Data preparation
+# Preparing training data
 
-AH-GNO training data are constructed from paired TELEMAC-2D and GAIA result files on the same native unstructured mesh.
+`scripts/build_dataset.py` converts paired TELEMAC-2D and GAIA result files into the dataset used by the training script.
 
-The public builder is provided in `scripts/build_dataset.py`. It implements the data representation used by the manuscript:
-
-- historical node states `[U, V, H, Z]`;
-- future bed-elevation increments `ΔZ`;
-- triangular nodal control areas;
-- training-only area-weighted normalization statistics;
-- scenario-level train/validation/test separation;
-- activity weighting for morphodynamically active nodes.
-
-## Input manifest
-
-Create a CSV with one row per simulated scenario:
+Each row in the input manifest represents one simulated case:
 
 ```csv
 case_id,role,hydro_file,gaia_file
@@ -22,11 +11,9 @@ Y07,val,/path/to/case_07_hy.slf,/path/to/case_07_ga.slf
 Y08,test,/path/to/case_08_hy.slf,/path/to/case_08_ga.slf
 ```
 
-The `role` field must be `train`, `val`/`validation`, or `test`.
+The TELEMAC and GAIA files for a case must use the same mesh and output times.
 
-The HYDRO and GAIA files for a scenario must use the same mesh and output-time grid. The builder reads `U`, `V`, and `H` from the TELEMAC-2D result and, by default, `Z` from the GAIA `BOTTOM` field.
-
-## Build a dataset
+For each case, the script reads `U`, `V` and `H` from the TELEMAC-2D result and bed elevation `Z` from the GAIA result. It then computes nodal control areas, forms rolling history windows, builds future `ΔZ` targets, and applies normalization based only on the training cases.
 
 Example:
 
@@ -36,40 +23,11 @@ python scripts/build_dataset.py \
   --history-k 7 \
   --bundle-b 10 \
   --base-step 2 \
-  --window-stride 1 \
-  --output data/yen_gno_dataset.pkl
+  --output data/gno_dataset.pkl
 ```
 
-`--base-step` controls the temporal sampling interval relative to the saved SELAFIN records. `--window-stride` controls the movement of the rolling training window.
+`--history-k` and `--bundle-b` should match the model configuration used for the run being reproduced. `--base-step` sets the sampling interval relative to the saved SELAFIN records.
 
-For the Yen experiments, the archived run metadata available with the project show a 2-minute base interval with `K=7` and `B=10` for one AREAWEIGHTED v6 configuration. Treat these values as an example configuration unless they are confirmed against the final manuscript checkpoint.
+The output pickle contains the mesh coordinates, nodal areas, split samples, normalization statistics and the metadata required by `scripts/train.py`.
 
-## Normalization
-
-Input and target normalization statistics are calculated **only from training scenarios**. Means and standard deviations are area-weighted using the nodal control areas of the native triangular mesh. Validation and test samples are transformed using the training statistics.
-
-## Activity weights
-
-The public builder uses
-
-```text
-w = 1 + gain * clip(activity / scale, 0, 1)
-```
-
-where `activity` is the maximum absolute physical `ΔZ` over the target bundle at a node. The default gain is 4. If `--activity-scale` is not specified, the training-set physical `ΔZ` standard deviation is used as a reproducible fallback.
-
-For exact reconstruction of a previously trained checkpoint, pass the activity scale stored with that training run rather than relying on the fallback.
-
-## Output
-
-The resulting pickle contains the fields expected by `scripts/train.py`, including:
-
-- `node_pos`
-- `node_area`
-- `elements`
-- `train_samples`, `val_samples`, `test_samples`
-- `normalizer_state`
-- `history_k`, `bundle_b`, `base_step`, `base_dt_minutes`
-- `scenario_split`
-
-Large processed pickle datasets are intentionally excluded from version control.
+Processed datasets are not committed to the repository.
