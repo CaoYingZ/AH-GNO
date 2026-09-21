@@ -1,6 +1,7 @@
 case: waiho
-restricted_geometry: true
-hydrodynamic_result: /path/to/private/hydrodynamic_result.slf
-gaia_result: /path/to/private/gaia_result.slf
-notes: "Do not commit the Waiho mesh, bathymetry, or restricted boundary data."
 features: [u, v, h, z]
+
+hydrodynamic_result: /path/to/hydrodynamic_result.slf
+gaia_result: /path/to/gaia_result.slf
+
+# Geometry, bathymetry and boundary files from the study are not distributed.
