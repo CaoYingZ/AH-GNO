@@ -1,0 +1,11 @@
+#
+# AH-GNO Yen benchmark forcing
+# Scenario: Y20_BaseHigh
+# Role: Validation
+#
+T       Q(1)     SL(2)
+s       m3/s     m
+0       0.0230   9.9877
+6000    0.0530   10.0319
+18000   0.0230   9.9877
+240000  0.0230   9.9877
