@@ -1,4 +1,4 @@
-"""Area-weighted preprocessing utilities for AH-GNO."""
+"""Mesh-area and normalization utilities used by AH-GNO."""
 from __future__ import annotations
 
 from typing import Dict, Tuple
