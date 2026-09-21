@@ -6,13 +6,13 @@ This repository provides the research-code release for the AH-GNO method describ
 
 ## What is included
 
-The public code is intentionally separated from restricted research data. `src/ahgno/model.py` contains the paper model; `scripts/train.py` contains the compact training loop; and `scripts/run_telemac_coupling.py` demonstrates online coupling with TELEMAC-2D. The implementation uses nodal control area in three places that must stay consistent with the paper: the graph integral quadrature, the K-selector global descriptor, and the horizon-head global descriptor. Training also uses an area-weighted Huber loss and an area-weighted horizon pseudo-label.
+The public code is intentionally separated from restricted research data. `src/AH_GNO/model.py` contains the paper model; `scripts/train.py` contains the compact training loop; and `scripts/run_telemac_coupling.py` demonstrates online coupling with TELEMAC-2D. The implementation uses nodal control area in three places that must stay consistent with the paper: the graph integral quadrature, the K-selector global descriptor, and the horizon-head global descriptor. Training also uses an area-weighted Huber loss and an area-weighted horizon pseudo-label.
 
 ## Repository layout
 
 ```text
 AH-GNO/
-├── src/ahgno/
+├── src/AH_GNO/
 │   ├── model.py
 │   ├── preprocessing.py
 │   └── losses.py
@@ -72,7 +72,23 @@ Older internal coupling scripts used ordinary node-count aggregation and ordinar
 
 ## Reproducibility status
 
-The current release contains the model, training loop, online TELEMAC coupling, preprocessing utilities, and benchmark templates. Scenario tables and additional preprocessing helpers may be added as the manuscript package is finalized.
+The current release contains the AH-GNO model, training loop, online TELEMAC coupling, area-weighted preprocessing utilities, and benchmark templates. The remaining reproducibility material to add is listed under **Reproducibility files still to be added** below.
+
+## Reproducibility files still to be added
+
+The following items are intentionally tracked as release tasks rather than being inferred from the manuscript:
+
+- the exact SLF-to-training-dataset construction script used for the reported experiments;
+- the final Yen hydrographs/scenario table and case-level train/validation/test split;
+- the final Bump discharge-water-level scenario table and split;
+- benchmark-specific configuration values matching the final checkpoints;
+- evaluation scripts for the area-weighted accuracy metrics and runtime summaries reported in the paper.
+
+Restricted Waiho geometry, bathymetry, mesh and boundary data will not be redistributed.
+
+## Naming convention
+
+The scientific method and repository are named **AH-GNO** throughout the documentation. Python module names cannot contain a hyphen, so the importable package is written as `AH_GNO` only where Python syntax requires a valid identifier.
 
 ## License
 
