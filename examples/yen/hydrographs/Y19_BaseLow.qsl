@@ -1,0 +1,11 @@
+#
+# AH-GNO Yen benchmark forcing
+# Scenario: Y19_BaseLow
+# Role: Train
+#
+T       Q(1)     SL(2)
+s       m3/s     m
+0       0.0170   9.9789
+6000    0.0530   10.0319
+18000   0.0170   9.9789
+240000  0.0170   9.9789
