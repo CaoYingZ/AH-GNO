@@ -39,6 +39,7 @@ AH-GNO/
 ├── scripts/
 │   ├── build_dataset.py
 │   ├── train.py
+│   ├── evaluate.py
 │   └── run_telemac_coupling.py
 │
 ├── configs/
@@ -101,6 +102,22 @@ python scripts/train.py \
 The public training script implements the area-weighted Huber loss and the learned horizon objective used by AH-GNO.
 
 The full research dataset binaries are not included in the repository. Public benchmark forcing files and scenario definitions are provided under `examples/`. A reproducible SELAFIN-to-AH-GNO dataset builder is provided in `scripts/build_dataset.py`; see [`docs/DATA_PREPARATION.md`](docs/DATA_PREPARATION.md) for the expected manifest and preprocessing workflow.
+
+## Evaluation
+
+Evaluate a trained AH-GNO checkpoint on the train, validation, or test split with area-weighted physical-space metrics:
+
+```bash
+python scripts/evaluate.py \
+  --dataset /path/to/gno_dataset.pkl \
+  --checkpoint /path/to/best_model.pth \
+  --split test \
+  --output results/test_metrics.json \
+  --per-horizon-csv results/test_per_horizon.csv \
+  --per-case-csv results/test_per_case.csv
+```
+
+The evaluator reports area-weighted **RMSE**, **MAE**, **relative L2 error**, and **R²** after converting predictions back to physical bed-elevation units. It reports both per-step `ΔZ` metrics and cumulative bed-change metrics, and also summarizes the learned effective write-back horizon. Training activity weights are not reused for evaluation; nodal control area is the spatial weighting measure.
 
 ## TELEMAC online coupling
 
