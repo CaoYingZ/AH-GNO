@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+"""Run online TELEMAC-2D and AH-GNO coupling.
+
+TELEMAC advances the hydrodynamics; AH-GNO supplies bed-elevation updates on
+the native mesh using the learned write-back horizon.
 """Minimal TELEMAC-2D + AH-GNO online coupling example.
 
 This is the paper-release version. It uses the area-weighted model and adaptive
