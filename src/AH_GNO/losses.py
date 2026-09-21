@@ -1,4 +1,4 @@
-"""Losses and horizon pseudo-labels used by AH-GNO."""
+"""Training loss and horizon-label utilities for AH-GNO."""
 from __future__ import annotations
 
 import torch
