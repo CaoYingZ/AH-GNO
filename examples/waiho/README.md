@@ -1,11 +1,5 @@
-# Waiho River case
+# Waiho River
 
-The Waiho River case is used in the manuscript to evaluate AH-GNO in a field-scale morphodynamic setting with an irregular river geometry and a substantially larger computational domain than the benchmark cases.
+Waiho is the field-scale case used in the study. It uses the same AH-GNO model and the same `U, V, H, Z` input variables as the benchmark cases.
 
-The same AH-GNO architecture and area-weighted formulation used for the Yen and Bump benchmarks are applied to the Waiho case. Model inputs consist of the hydrodynamic and bed-state variables `U`, `V`, `H`, and `Z` defined on the native unstructured TELEMAC mesh.
-
-## Data availability
-
-The Waiho River mesh, bathymetry, and associated boundary-condition files are not distributed with this repository because they are subject to data-use restrictions. The source code and model workflow are identical to those used for the public benchmark cases.
-
-Users can apply the released AH-GNO implementation to their own TELEMAC river models by providing the corresponding mesh, hydrodynamic fields, bed elevation, and reference morphodynamic results required for training or evaluation.
+The river mesh, bathymetry and boundary-condition files are not included because the study data are subject to use restrictions. No special Waiho-only model code is required; the scripts in this repository can be used with another TELEMAC river model once the corresponding inputs are supplied.
