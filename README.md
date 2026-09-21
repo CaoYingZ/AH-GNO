@@ -72,6 +72,10 @@ Older internal coupling scripts used ordinary node-count aggregation and ordinar
 
 ## Reproducibility status
 
+Pretrained checkpoints and processed binary datasets are not distributed in this release unless they can be verified against the final manuscript experiments. The public repository therefore prioritizes the paper-consistent source code, benchmark forcing definitions, scenario splits, and reproducible preprocessing/training workflow over potentially stale binary artifacts.
+
+
+
 The current release contains the AH-GNO model, training loop, online TELEMAC coupling, area-weighted preprocessing utilities, and benchmark templates. The remaining reproducibility material to add is listed under **Reproducibility files still to be added** below.
 
 ## Reproducibility files still to be added
