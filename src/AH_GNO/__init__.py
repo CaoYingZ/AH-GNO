@@ -14,3 +14,5 @@ __all__ = [
     "compute_h_star",
     "denormalize_dz",
 ]
+
+__version__ = "0.1.0"
