@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Train AH-GNO from a preprocessed gno_dataset.pkl.
+"""Train AH-GNO from a prepared dataset.
 
-The dataset format is the one produced by the research notebook: train/val/test
-samples, normalized coordinates, nodal control area, and area-weighted
-normalization statistics.
+The input pickle is produced by scripts/build_dataset.py and contains the mesh,
+area weights, normalization statistics, and train/validation/test samples.
 """
 from __future__ import annotations
 
