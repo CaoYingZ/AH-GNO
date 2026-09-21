@@ -1,0 +1,9 @@
+scenario,upstream_Q_m3s,downstream_SL_m,role
+B01_Base,1000,10.0,Train
+B02_LowQ,850,10.0,Train
+B03_HighQ,1150,10.0,Train
+B04_LowZ,1000,9.6,Train
+B05_HighZ,1000,10.4,Train
+B06_LowQ_LowZ,850,9.6,Validation
+B07_HighQ_HighZ,1150,10.4,Train
+B08_HighQ_LowZ,1150,9.6,Test
