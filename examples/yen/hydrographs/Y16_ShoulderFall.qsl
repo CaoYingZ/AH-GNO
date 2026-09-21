@@ -1,0 +1,12 @@
+#
+# AH-GNO Yen benchmark forcing
+# Scenario: Y16_ShoulderFall
+# Role: Validation
+#
+T       Q(1)     SL(2)
+s       m3/s     m
+0       0.0200   9.9833
+6000    0.0530   10.0319
+12000   0.0400   10.0128
+24000   0.0200   9.9833
+240000  0.0200   9.9833
