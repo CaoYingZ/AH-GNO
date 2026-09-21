@@ -1,0 +1,8 @@
+case: yen
+source: "Official TELEMAC-MASCARET GAIA Yen 180-degree bend benchmark"
+public_case_files: false
+notes: "Use the benchmark from your TELEMAC installation; keep only your scenario hydrographs/config changes here."
+history_k: 7
+bundle_b: 10
+gno_radius: 0.15
+features: [u, v, h, z]

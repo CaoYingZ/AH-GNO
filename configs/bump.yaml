@@ -1,0 +1,5 @@
+case: bump
+source: "Official TELEMAC-MASCARET GAIA Bump benchmark"
+public_case_files: false
+notes: "Use the benchmark from your TELEMAC installation; publish only your scenario modifications/configuration."
+features: [u, v, h, z]

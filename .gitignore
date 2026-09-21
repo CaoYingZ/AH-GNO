@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Research outputs and large binary files
+results/
+training/
+logs/
+*.slf
+*.res
+*.pkl
+*.npy
+*.npz
+*.pt
+
+# Private/restricted data
+data/private/
+examples/waiho/data/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

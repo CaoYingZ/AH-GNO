@@ -1,0 +1,6 @@
+case: waiho
+restricted_geometry: true
+hydrodynamic_result: /path/to/private/hydrodynamic_result.slf
+gaia_result: /path/to/private/gaia_result.slf
+notes: "Do not commit the Waiho mesh, bathymetry, or restricted boundary data."
+features: [u, v, h, z]

@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "AH-GNO: Adaptive-Horizon Graph Neural Operator for morphodynamic modelling"
+type: software
+authors:
+  - family-names: Cao
+    given-names: Ying
+  - family-names: Yang
+    given-names: Yifan
+  - family-names: Xia
+    given-names: Junqiang
+  - family-names: Mullarney
+    given-names: Julia C.
+  - family-names: Franca
+    given-names: Mario
+version: 0.1.0
