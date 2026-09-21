@@ -2,11 +2,11 @@
 
 **Adaptive-Horizon Graph Neural Operator for coupled surrogate morphodynamic modelling**
 
-This repository is a cleaned research-code release for the AH-GNO method described in the manuscript. AH-GNO predicts bundled bed-elevation increments on the native unstructured TELEMAC mesh and adaptively selects both historical information and the reliable write-back horizon.
+This repository provides the research-code release for the AH-GNO method described in the manuscript. AH-GNO predicts bundled bed-elevation increments on the native unstructured TELEMAC mesh and adaptively selects both historical information and the reliable write-back horizon.
 
 ## What is included
 
-The public code is intentionally separated from private research data. `src/ahgno/model.py` contains the paper model; `scripts/train.py` contains the compact training loop; and `scripts/run_telemac_coupling.py` demonstrates online coupling with TELEMAC-2D. The implementation uses nodal control area in three places that must stay consistent with the paper: the graph integral quadrature, the K-selector global descriptor, and the horizon-head global descriptor. Training also uses an area-weighted Huber loss and an area-weighted horizon pseudo-label.
+The public code is intentionally separated from restricted research data. `src/ahgno/model.py` contains the paper model; `scripts/train.py` contains the compact training loop; and `scripts/run_telemac_coupling.py` demonstrates online coupling with TELEMAC-2D. The implementation uses nodal control area in three places that must stay consistent with the paper: the graph integral quadrature, the K-selector global descriptor, and the horizon-head global descriptor. Training also uses an area-weighted Huber loss and an area-weighted horizon pseudo-label.
 
 ## Repository layout
 
@@ -62,17 +62,21 @@ python scripts/run_telemac_coupling.py \
 
 ## Benchmark and field data policy
 
-The Yen and Bump cases are based on official TELEMAC-MASCARET/GAIA benchmarks. This repository should document the scenario changes used by the study rather than copy an entire third-party benchmark directory. Generated `.slf` outputs are also not tracked.
+The Yen and Bump cases are based on official TELEMAC-MASCARET/GAIA benchmarks. This repository documents the scenario changes used by the study rather than copying an entire third-party benchmark directory. Generated `.slf` outputs are not tracked.
 
-The Waiho River case is treated differently. Real mesh, bathymetry, coordinates, DEM/topographic information, and any restricted boundary data should **not** be committed. `examples/waiho/` contains only a usage template. Whether a trained Waiho checkpoint can be released should be checked separately with the data owner and institution.
+The Waiho River case is treated differently. Real mesh, bathymetry, coordinates, DEM/topographic information, and restricted boundary data are not distributed here. `examples/waiho/` contains only a usage template. Redistribution of any trained Waiho checkpoint should be confirmed separately with the data owner and institution.
 
 ## Important consistency note
 
-Older internal coupling scripts used ordinary node-count aggregation and ordinary node means. Those are **not** the manuscript formulation. The paper-consistent version must pass `node_area` to the graph operator and use area-weighted global descriptors for both K and B.
+Older internal coupling scripts used ordinary node-count aggregation and ordinary node means. Those are **not** the manuscript formulation. The paper-consistent version passes `node_area` to the graph operator and uses area-weighted global descriptors for both K and B.
+
+## Reproducibility status
+
+The current release contains the model, training loop, online TELEMAC coupling, preprocessing utilities, and benchmark templates. Scenario tables and additional preprocessing helpers may be added as the manuscript package is finalized.
 
 ## License
 
-No open-source license is selected in this draft repository. Choose a license only after supervisor/institutional IP review, especially because the project couples to TELEMAC-MASCARET and may be associated with a patent submission.
+No open-source license is currently provided. Reuse and redistribution terms will be added after institutional licensing review.
 
 ## Citation
 
