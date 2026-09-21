@@ -1,4 +1,4 @@
-"""Public Python interface for AH-GNO."""
+"""AH-GNO package interface."""
 
 from .model import LearnedHorizonGNO, build_model
 from .preprocessing import AreaWeightedNormalizer, compute_node_areas, normalize_coordinates
