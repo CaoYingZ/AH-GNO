@@ -9,4 +9,4 @@ The same AH-GNO implementation is used for this case. To apply the code to an au
 - GAIA reference bed elevations for supervised training;
 - the corresponding boundary and forcing files that you are permitted to use.
 
-Before making this repository public, confirm with the data owner and your institution whether trained Waiho checkpoints may also be redistributed.
+Any trained Waiho checkpoint should be redistributed only after confirmation with the data owner and institution.
