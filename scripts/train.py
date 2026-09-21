@@ -17,7 +17,7 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 
-from ahgno import (
+from AH_GNO import (
     AreaWeightedHuberLoss,
     AreaWeightedNormalizer,
     build_model,
