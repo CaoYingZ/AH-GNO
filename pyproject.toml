@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "AH-GNO"
 version = "0.1.0"
-description = "Adaptive-Horizon Graph Neural Operator for morphodynamic bed updating"
+description = "AH-GNO for morphodynamic prediction and TELEMAC coupling"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.26",
