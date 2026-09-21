@@ -1,55 +1,36 @@
-# Area-weighted AH-GNO coupling
+# Area-weighted coupling
 
-AH-GNO uses nodal control area consistently during inference so that the discrete graph operator more closely represents an integral operator on an unstructured mesh.
+AH-GNO uses nodal control area in the graph aggregation and in the global features used by the temporal modules.
 
-## Graph integral
+For node (i), the graph update is based on
 
-For query node (i), the area-weighted graph aggregation is
+```text
+sum_j A_j K(i,j) h_j
+--------------------
+      sum_j A_j
+```
 
-[
-h_i^{(l+1)}
-=
-h_i^{(l)}
-+
-\sigma\left(
-\frac{
-\sum_{j\in\mathcal{N}(i)}
-A_j K(s_i-s_j)\odot h_j^{(l)}
-}{
-\sum_{j\in\mathcal{N}(i)} A_j
-}
-\right),
-]
+over the neighbours inside the search radius. Here `A_j` is the control area associated with node `j`.
 
-where (A_j) is the nodal control area associated with neighbor node (j).
+The same area weighting is used when the model forms the global feature for the history selector and the write-back horizon head:
 
-In the released implementation, this weighting is handled inside the graph integral transform and the same `node_area` array is passed to every GNO layer.
+```text
+sum_i A_i h_i
+-------------
+   sum_i A_i
+```
 
-## Area-weighted global descriptors
+This keeps the aggregation tied to represented area rather than to the number of mesh nodes.
 
-Nodal control area is also used when constructing the global descriptors for the adaptive temporal modules.
+## TELEMAC loop
 
-For both the history selector and the horizon head, the global feature is computed as
+`scripts/run_telemac_coupling.py` follows the online loop used by the model:
 
-[
-\bar{h}
-=
-\frac{\sum_i A_i h_i}{\sum_i A_i}.
-]
-
-This replaces an ordinary node-wise mean and reduces sensitivity to spatial variations in mesh density.
-
-## Online TELEMAC coupling
-
-The public coupling workflow performs the following steps:
-
-1. advance TELEMAC-2D to the next AH-GNO evaluation time;
-2. collect the required history of `U`, `V`, `H`, and `Z`;
-3. normalize the state variables using the training statistics;
-4. evaluate AH-GNO with `node_area`;
-5. use the learned effective write-back horizon `effective_b`;
-6. accumulate the predicted bed-elevation increments over the accepted horizon;
-7. update TELEMAC bed elevation and water depth;
-8. continue the hydrodynamic simulation.
-
-The implementation used for the public release is provided in `scripts/run_telemac_coupling.py`.
+1. advance TELEMAC-2D;
+2. collect the required `U, V, H, Z` history;
+3. normalize the state;
+4. run AH-GNO with `node_area`;
+5. take the learned `effective_b`;
+6. sum the accepted bed increments;
+7. write the updated bed and water depth back to TELEMAC;
+8. continue the simulation.
